@@ -1,1 +1,1 @@
-Repositorio githit y githun de este curso
+Repositorio githit y github de este curso 
