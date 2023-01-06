@@ -70,3 +70,30 @@ DATA = [
         'language': 'python',
     },
 ]
+
+def run():
+     # Comprehensions solutions
+     
+    #  trabajadores de que utilizen python 
+    all_python_devs = [worker["name"] for worker in DATA if worker["language"] == "python"]
+    
+    # trabajadores que trabajen platzi
+    all_Platzi_workers = [worker["name"] for worker in DATA if worker["organization"] == "Platzi"]
+    
+    # filtrado por edad, devuelve el diccionario comple
+    adults =  [worker["name"] for worker in DATA if worker["age"] > 18]
+    
+    #suma de dicionario. El diccionario data + uno generado por el filtrado.
+    # el | (se denomina pipe) significa suma de diccionarios. 
+    # Es una caracteristica de python3.9
+    # El diccionario de la izquierda lambda worker: worker, trae el diccionario completo. El diccionario de la derecha y devuelve true si cumple la condicion de que la edad es mayor a 70 y lo suma al diccionario. 
+    old_people = list(map(lambda worker: worker | {"old": worker["age"] > 70}, DATA))
+
+    for worker in all_python_devs:
+        print(worker)
+
+
+
+
+if __name__ == '__main__':
+    run()
