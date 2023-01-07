@@ -72,28 +72,57 @@ DATA = [
 ]
 
 def run():
-     # Comprehensions solutions
+    # Comprehensions solutions
      
     #  trabajadores de que utilizen python 
-    all_python_devs = [worker["name"] for worker in DATA if worker["language"] == "python"]
+     all_python_devs = [worker["name"] for worker in DATA if worker["language"] == "python"]
     
-    # trabajadores que trabajen platzi
-    all_Platzi_workers = [worker["name"] for worker in DATA if worker["organization"] == "Platzi"]
+    # # trabajadores que trabajen platzi
+     all_Platzi_workers = [worker["name"] for worker in DATA if worker["organization"] == "Platzi"]
     
-    # filtrado por edad, devuelve el diccionario comple
-    adults =  [worker["name"] for worker in DATA if worker["age"] > 18]
+    # # filtrado por edad, devuelve el diccionario comple
+     adults =  [worker["name"] for worker in DATA if worker["age"] > 18]
     
-    #suma de dicionario. El diccionario data + uno generado por el filtrado.
-    # el | (se denomina pipe) significa suma de diccionarios. 
-    # Es una caracteristica de python3.9
-    # El diccionario de la izquierda lambda worker: worker, trae el diccionario completo. El diccionario de la derecha y devuelve true si cumple la condicion de que la edad es mayor a 70 y lo suma al diccionario. 
-    old_people = list(map(lambda worker: worker | {"old": worker["age"] > 70}, DATA))
+    # #suma de dicionario. El diccionario data + uno generado por el filtrado.
+    # # el | (se denomina pipe) significa suma de diccionarios. 
+    # # Es una caracteristica de python3.9
+    # # El diccionario de la izquierda lambda worker: worker, trae el diccionario completo. El diccionario de la derecha y devuelve true si cumple la condicion de que la edad es mayor a 70 y lo suma al diccionario. 
+     old_people = list(map(lambda worker: worker | {"old": worker['age'] > 70 }, DATA))
 
-    for worker in all_python_devs:
+
+     for worker in all_python_devs:
         print(worker)
+    
+     for worker in all_Platzi_workers:
+        print(worker)
+  
+    
+     for worker in old_people:
+        print(worker)
+        
+    #reto 
+
+    #crear las listas de all_python_devs y all_Platzi _workers usando una combinacion de filter y map.
+
+     all_python_devs=list(map(lambda worker: worker["name"] ,list( filter(lambda worker: worker["language"] == "python" ,DATA))))
+     print(all_python_devs)
+    
+     all_Platzi_workers= list(map(lambda worker: worker["name"] ,list( filter(lambda worker: worker["organization"] == "Platzi" ,DATA))))
+     print(all_Platzi_workers)
+    
+
+     # crear la lista de old_people y adults con list comprehations
+     # old_people
+     old_people=[worker['name'] for worker in DATA if worker['age'] >= 18]
+    
+     print(old_people)
+    # adults
+     adults = [worker['name'] for worker in DATA if worker['age'] >70]
+    
 
 
 
 
 if __name__ == '__main__':
     run()
+    
