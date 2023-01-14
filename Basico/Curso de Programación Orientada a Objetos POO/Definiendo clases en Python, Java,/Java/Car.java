@@ -3,7 +3,4 @@ Class Car{
 String licence;
 String driver;
 Integer passegenger;
-    public static void name() {
-        
-    }
 }
