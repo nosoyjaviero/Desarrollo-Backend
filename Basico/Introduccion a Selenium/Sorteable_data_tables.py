@@ -24,7 +24,6 @@ class Tables(unittest.TestCase):
                     
                     row_data=driver.find_element_by_xpath(f'//*[@id="table1"]/tbody/tr[{i}]/td[{j}]')
                    
-                    print(f'i={i} {header.text} j={j}  row data= {row_data.text}')
                     table_data[i].append(row_data.text)
                     
             print(table_data)
